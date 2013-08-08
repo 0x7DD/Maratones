@@ -1,4 +1,4 @@
 Maratones
 =========
 
-Code of problems solved form programming contest.
+Code of problems solved from programming contest.
