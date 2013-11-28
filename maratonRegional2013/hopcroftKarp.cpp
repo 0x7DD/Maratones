@@ -1,5 +1,4 @@
-#include <algorithm>
-#include <iostream>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -10,6 +9,11 @@ const int MAXM = 150000;
 int n1, n2, edges, last[MAXN1], prev[MAXM], head[MAXM];
 int matching[MAXN2], dist[MAXN1], Q[MAXN1];
 bool used[MAXN1], vis[MAXN1];
+
+
+int board1[101][101];
+int board2[101][101];
+char board[101][101];
 
 void init(int _n1, int _n2) {
     n1 = _n1;
@@ -78,74 +82,50 @@ int maxMatching() {
 int main() {
     int n;
     while(cin >> n){
-        int board1[n+1][n+1];
-        int board2[n+1][n+1];
-        int board[n+1][n+1];
+        for(int i = 0; i < n; ++i){
+            for(int j = 0; j < n; ++j){
+                board1[i][j] = -1;
+                board2[i][j] = -1;
+            }
+        }
         int controw = 0, contcol = 0;
-        for(int i = 0; i < n; ++i){
-            string a;
-            cin >> a;
-            for(int j = 0; j < n; ++j){
-                if(a[j] != 'X')
-                    board[i][j] = 0;
-                else
-                    board[i][j] = -1;
-            }
-        }
-        int cont1 = 0;
-        for(int i = 0; i < n; ++i){
-            for(int j = 0; j < n; ++j){
-                if(board[i][j] == -1 ){
-                    cont1 += (j != 0)? 1:0;
-                    board1[i][j] = -1;
-                }
-                else
-                    board1[i][j] = cont1;
-            }
-            cont1++;       
-        }
+        for(int i = 0; i < n; ++i)
+            scanf("%s", &board[i]);
         
-        int cont2 = 0;
-        for(int i = 0; i < n; ++i){
-            for(int j = 0; j < n; ++j){
-                if(board[j][i] == -1){
-                    cont2 += (i != 0)? 1:0;
-                    board2[j][i] = -1;
+        
+        for(int i=0;i<n;i++) 
+            for(int j=0;j<n;j++) 
+                if(board[i][j]=='.'){ 
+                    while(j<n && board[i][j]=='.'){ 
+                        board1[i][j]=controw; 
+                        j++;     
+                    } 
+                    controw++; 
+                } 
+        
+        for(int i=0;i<n;i++) 
+            for(int j=0;j<n;j++) 
+                if(board[j][i]=='.'){ 
+                    while(j<n && board[j][i]=='.'){ 
+                        board2[j][i]=contcol; 
+                        j++;     
+                    } 
+                    contcol++; 
                 }
-                else
-                    board2[j][i] = cont2;
-            }
-            cont2++;       
-        }
-        int alreadyMatched[cont1+1][cont2+1];
-        for(int i = 0; i < n; ++i){
-            for(int j = 0; j < n; ++j)
-                alreadyMatched[i][j] = 0;
-        }
-        /*debugging
-        for(int i = 0; i < n; ++i){
-            for(int j = 0; j < n; ++j)
-                cout<<board1[i][j]<<" ";
-            cout<<endl;
-        }
-        cout<<endl;
-        for(int i = 0; i < n; ++i){
-            for(int j = 0; j < n; ++j)
-                cout<<board2[i][j]<<" ";
-            cout<<endl;
-        }*/
-        init(cont1, cont2);
+                
+        init(controw+1, contcol+1);
         for(int i = 0; i < n; ++i){
             for(int j = 0; j < n; ++j){
                 int a = board1[i][j];
                 int b = board2[i][j];
-                if(board1[i][j] != -1 && !alreadyMatched[a][b]){
-                    addEdge(board1[i][j], board2[i][j]);
-                    alreadyMatched[a][b] = 1;;
+                if(board1[i][j] != -1){
+                    addEdge(a, b);
+                    //alreadyMatched[a][b] = 1;
                 }
             }
         }
-    
+        cout << maxMatching() << endl;
     }
-    cout << maxMatching() << endl;
+    return 0;
+    
 }
