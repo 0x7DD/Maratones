@@ -12,8 +12,8 @@ double a1,b1,t1,a2,b2,t,e2;
 using namespace std;
 
 const double INF = 1e100;
-const double EPS = 1e-12;
-const double N = 100000.0;
+const double EPS = 1e-5;
+const double N = 10000.0;
 
 
 struct PT { 
@@ -43,17 +43,25 @@ ostream &operator<<(ostream &os, const PT &p) {
 
 
 
-double myFun(double angle1, double angle2){
-    double delta = (angle2 -angle1)/N;
-    while(angle1 < angle2){
-        area
-    }
-    
-}
-
 double elipseAt(double x){
     return (b2/a2)*sqrt((a2*a2) - (x*x));
 }
+
+double polarElipseAt(double angle){
+    return (a2*(1.0 - (e2*e2)))/(1.0 - e2*cos(angle));
+}
+
+double myFun(double angle1, double angle2){
+    double delta = (angle2 - angle1)/N;
+    double area = 0.0;
+    while(angle1 < angle2){
+        double w = angle1 + (delta/2.0);
+        area += 0.5*(polarElipseAt(w)*polarElipseAt(w))*delta;
+        angle1 += delta;
+    }
+    return area;
+}
+
 
 int main(){
     int cont = 0;
@@ -61,18 +69,19 @@ int main(){
     
         double t2 = t1*sqrt((a2/a1)*(a2/a1)*(a2/a1));
         double c2 = sqrt(a2*a2 - b2*b2);
-        e2 = sqrt(1 - (b2*b2/a2*a2));
+        e2 = sqrt(1.0 - ((b2*b2)/(a2*a2)));
         double totalarea = PI*a2*b2;
         double sectionPerDay = totalarea/t2;
-        target = ((t <= t2)? t:t%t2)*sectionPerDay;//if the time to determine the position of p2 is greater than t2 then the time is t%t2.
+        double target = ((t <= t2)? t:fmod(t,t2))*sectionPerDay;//if the time to determine the position of p2 is greater than t2 then the time is t%t2.
         double low = 0.0;
-        double high = 2.0*PI;
-        
+        double high =4.0*PI;
+        double val = high;
         while(true){
-            double val = (low + ((high - low)/2.0));
-            double eval = myFun(low,val);
-            if(eval < target)high = val;
-            else low = val;
+            val = (low + ((high - low)/2.0));
+            double eval = myFun(0.0,val);
+            if(fabs(eval - target) < EPS) break;
+            if(eval < target)low = val;
+            else high = val;
         }
         
         //computing the solution after finding the angle which subtends the area that i'm looking for
@@ -86,8 +95,8 @@ int main(){
         double Y1 = elipseAt(X1);
         double Y2 = elipseAt(X2);
         
-        double Y11 = -elipseAt(X1);
-        double Y22 = -elipseAt(X2);
+        double Y11 = -Y1;
+        double Y22 = -Y2;
         
         PT ans;
         
