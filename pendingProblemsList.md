@@ -44,3 +44,19 @@ SamaraContest:
   Full board.
   
   Spectrum.
+  
+[Dhaka Regional Contest 2013] (https://icpcarchive.ecs.baylor.edu/index.php?option=com_onlinejudge&Itemid=8&category=594)
+
+ Game of MJ
+ 
+ Game of Throne
+ 
+ Pearl Chains
+ 
+ Watching the Kangaroo
+ 
+ GCD XOR
+ 
+ Fill the Cuboid
+ 
+ 
