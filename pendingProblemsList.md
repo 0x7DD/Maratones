@@ -53,10 +53,26 @@ SamaraContest:
  
  Pearl Chains
  
- Watching the Kangaroo
- 
  GCD XOR
  
  Fill the Cuboid
+ 
+ [North America - Greater NY] (https://icpcarchive.ecs.baylor.edu/index.php?option=com_onlinejudge&Itemid=8&category=617)
+ 
+ Triangle Count Sequences of Polygon Triangulations
+ 
+ Contraband
+ 
+ [SWERC 2013] (https://icpcarchive.ecs.baylor.edu/index.php?option=com_onlinejudge&Itemid=8&category=614)
+ 
+ Mixing Colours
+ 
+ Decoding the Hallway
+ 
+ Joe is learning to speak
+ 
+ Binary Tree
+ 
+ Cleaning the Hallway
  
  
