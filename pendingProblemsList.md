@@ -75,4 +75,18 @@ SamaraContest:
  
  Cleaning the Hallway
  
+ [CERC - 2012] (https://icpcarchive.ecs.baylor.edu/index.php?option=com_onlinejudge&Itemid=8&category=567)
+ 
+ Who wants to live forever?
+ 
+ Non-boring sequences
+ 
+ Farm and factory
+ 
+ Jewel heist
+ 
+ The Dragon and the knights
+ 
+ Graphic Madness
+ 
  
