@@ -79,7 +79,7 @@ SamaraContest:
  
  Who wants to live forever?
  
- Non-boring sequences
+ ~~Non-boring sequences~~
  
  Farm and factory
  
