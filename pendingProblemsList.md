@@ -10,7 +10,7 @@ SamaraContest:
 
   Rubik's rectangle.
   
-  Magical GCD.
+  ~~Magical GCD.~~
   
   Subway.
   
@@ -71,7 +71,7 @@ SamaraContest:
  
  Joe is learning to speak
  
- Binary Tree
+ ~~Binary Tree~~
  
  Cleaning the Hallway
  
